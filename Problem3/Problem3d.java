@@ -72,6 +72,59 @@ class Graph{
 }
 
 class Main{
+        
+        int q = 0;
+
+        ArrayList<Node> DFSRec(final Node start, final Node end, int size, ArrayList<Node> visited){
+                ArrayList<Node> check = new ArrayList<Node>();
+                visited.add(start);
+                for(int j = 0; j < start.neighbors.size(); j++){
+                        if(start.data != end.data){
+                                if(!visited.contains(start.neighbors.get(j).dest)){
+                                        q++;
+                                        check = DFSRec(start.neighbors.get(j).dest, end, size, visited);
+                                }
+                        }
+                }
+                return visited;
+        }
+
+        ArrayList<Node> DFS(final Node start, final Node end, int size){
+                ArrayList<Node> DFSc = new ArrayList<Node>();
+                DFSc = DFSRec(start, end, size, visited);
+                if(!visited.contains(end)){
+                        System.out.println("Node " + end + " was not found.");
+                        System.out.println(visited);
+                }
+                else{
+                        System.out.println("Node " + end + " found");
+                        System.out.println(visited);
+                }
+                return DFSc;
+        }
+
+        Graph createRandomUnweightedGraphIter(Node[] nodes, int n){
+                Random rand = new Random();
+                Graph graphing = new Graph();
+                String alp = "abcdefghijklmnopqrstuvxyz";
+                int size = alp.length();
+                for(int i = 0; i < n; i++){
+                        char tempS = alp.charAt(rand.nextInt(size));
+                        String temp = String.valueOf(tempS);
+                        nodes[i] = graphing.addNode(temp);
+                }
+                for(int k = 0; k < n; k++){
+                        int nm = rand.nextInt(nodes.length);
+                        int m = rand.nextInt(nodes.length);
+                        graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                }
+
+                ArrayList<Node> check = new ArrayList<Node>();
+                check = DFS(nodes[0], nodes[3], n);
+
+                return graphing;
+        }
+        
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];

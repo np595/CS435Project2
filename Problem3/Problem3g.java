@@ -72,6 +72,53 @@ class Graph{
 }
 
 class Main{
+        
+         ArrayList<Node> BFTIter(final Graph graph){
+                HashSet<Node> node = graph.getAllNodes();
+                ArrayList<Node> nodes = new ArrayList<Node>(node);
+                ArrayList<Node> visited = new ArrayList<Node>();
+                for(int w = 0; w < nodes.size(); w++){
+                        if(!visited.contains(nodes.get(w))){
+                                visited.add(nodes.get(w));
+                        }
+                        for(int x = 0; x < nodes.get(w).neighbors.size(); x++){
+                                if(!visited.contains(nodes.get(w).neighbors.get(x).dest)){
+                                        visited.add(nodes.get(w).neighbors.get(x).dest);
+                                }
+                        }
+                }
+                return visited;
+        }
+
+        ArrayList<Node> BFT(final Graph graph){
+                ArrayList<Node> visited = new ArrayList<Node>();
+                ArrayList<Node> BFTc = new ArrayList<Node>();
+                BFTc = BFTIter(graph);
+                System.out.println(BFTc);
+                return BFTc;
+        }
+
+        Graph createRandomUnweightedGraphIter(Node[] nodes, int n){
+                Random rand = new Random();
+                Graph graphing = new Graph();
+                String alp = "abcdefghijklmnopqrstuvxyz";
+                int size = alp.length();
+                for(int i = 0; i < n; i++){
+                        char tempS = alp.charAt(rand.nextInt(size));
+                        String temp = String.valueOf(tempS);
+                        nodes[i] = graphing.addNode(temp);
+                }
+                for(int k = 0; k < n; k++){
+                        int nm = rand.nextInt(nodes.length);
+                        int m = rand.nextInt(nodes.length);
+                        graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                }
+
+                ArrayList<Node> check = new ArrayList<Node>();
+                check = BFT(graphing);
+                return graphing;
+        }
+        
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];

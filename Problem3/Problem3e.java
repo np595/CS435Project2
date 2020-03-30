@@ -72,6 +72,71 @@ class Graph{
 }
 
 class Main{
+        
+        ArrayList<Node> DFSIter(final Node start, final Node end, int size, ArrayList<Node> visited){
+                Node curr = start;
+                while(curr != end){
+                        if(!visited.contains(curr))
+                                visited.add(curr);
+                        if(curr.neighbors.size() == 0){
+                                return visited;
+                        }
+                        for(int j = 0; j < curr.neighbors.size(); j++){
+                                if(curr.data != end.data){
+                                        if(!visited.contains(curr.neighbors.get(j).dest)){
+                                                curr = curr.neighbors.get(j).dest;
+                                                break;
+                                        }
+                                }
+                                if(curr.data != end.data && j == (curr.neighbors.size() - 1)){
+                                        curr = start;
+                                }
+                        }
+                        if(curr.data == end.data){
+                                visited.add(curr);
+                                return visited;
+                        }
+                }
+                return visited;
+        }
+
+        ArrayList<Node> DFS(final Node start, final Node end, int size){
+                ArrayList<Node> DFSc = new ArrayList<Node>();
+                ArrayList<Node> visited = new ArrayList<Node>();
+                DFSc = DFSIter(start, end, size, visited);
+                if(!DFSc.contains(end)){
+                        System.out.println("Node " + end + " was not found.");
+                        System.out.println(DFSc);
+                }
+                else{
+                        System.out.println("Node " + end + " found");
+                        System.out.println(DFSc);
+                }
+                return DFSc;
+        }
+
+        Graph createRandomUnweightedGraphIter(Node[] nodes, int n){
+                Random rand = new Random();
+                Graph graphing = new Graph();
+                String alp = "abcdefghijklmnopqrstuvxyz";
+                int size = alp.length();
+                for(int i = 0; i < n; i++){
+                        char tempS = alp.charAt(rand.nextInt(size));
+                        String temp = String.valueOf(tempS);
+                        nodes[i] = graphing.addNode(temp);
+                }
+                for(int k = 0; k < n; k++){
+                        int nm = rand.nextInt(nodes.length);
+                        int m = rand.nextInt(nodes.length);
+                        graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                }
+
+                ArrayList<Node> check = new ArrayList<Node>();
+                check = DFS(nodes[0], nodes[3], n);
+
+                return graphing;
+        }
+        
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];

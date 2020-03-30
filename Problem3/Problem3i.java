@@ -72,6 +72,31 @@ class Graph{
 }
 
 class Main{
+         ArrayList<Node> BFTIter(final Graph graph){
+                HashSet<Node> node = graph.getAllNodes();
+                ArrayList<Node> nodes = new ArrayList<Node>(node);
+                ArrayList<Node> visited = new ArrayList<Node>();
+                for(int w = 0; w < nodes.size(); w++){
+                        if(!visited.contains(nodes.get(w))){
+                                visited.add(nodes.get(w));
+                        }
+                        for(int x = 0; x < nodes.get(w).neighbors.size(); x++){
+                                if(!visited.contains(nodes.get(w).neighbors.get(x).dest)){
+                                        visited.add(nodes.get(w).neighbors.get(x).dest);
+                                }
+                        }
+                }
+                return visited;
+        }
+
+        ArrayList<Node> BFT(final Graph graph){
+                ArrayList<Node> visited = new ArrayList<Node>();
+                ArrayList<Node> BFTc = new ArrayList<Node>();
+                BFTc = BFTIter(graph);
+                System.out.println(BFTc);
+                return BFTc;
+        }
+        
         Graph createLinkedList(Node[] nodes, int n){
                 Random rand = new Random();
                 Graph graphing = new Graph();
@@ -89,6 +114,8 @@ class Main{
                                 graphing.addUndirectedEdge(nodes[nm], nodes[m]);
                         }
                 }
+                ArrayList<Node> check = new ArrayList<Node>();
+                check = BFT(graphing);
                 return graphing;
         }
         

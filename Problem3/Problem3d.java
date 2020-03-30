@@ -131,6 +131,8 @@ class Main{
                 Random rand = new Random();
                 Graph graphing = new Graph();
                 Main test = new Main();
+                graphing = test.createRandomUnweightedGraphIter(nodes, nodeSize);
+
         }
 }
 

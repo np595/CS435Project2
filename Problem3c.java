@@ -70,3 +70,36 @@ class Graph{
                 return allNode;
         }
 }
+
+class Main{
+        
+        Graph createLinkedList(Node[] nodes, int n){
+                Random rand = new Random();
+                Graph graphing = new Graph();
+                String alp = "abcdefghijklmnopqrstuvxyz";
+                int size = alp.length();
+                for(int i = 0; i < n; i++){
+                        char tempS = alp.charAt(rand.nextInt(size));
+                        String temp = String.valueOf(tempS);
+                        nodes[i] = graphing.addNode(temp);
+                }
+                for(int k = 0; k < nodes.length; k++){
+                        int nm = k;
+                        int m = k + 1;
+                        if(m < nodes.length){
+                                graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                        }
+                }
+                return graphing;
+        }
+        
+        public static void main(String[] args){
+                int nodeSize = 5;
+                Node[] nodes = new Node[nodeSize];
+                Random rand = new Random();
+                Graph graphing = new Graph();
+                Main test = new Main();
+                
+                graphing = test.createLinkedList(nodes, nodeSize);
+        }
+}

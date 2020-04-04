@@ -77,7 +77,7 @@ class Main{
 
         ArrayList<Node> BFTRec(final Graph graph){
                 HashSet<Node> node = graph.getAllNodes();
-                ArrayList<Node> nodes = new ArrayList<>(node);
+                ArrayList<Node> nodes = new ArrayList<Node>(node);
                 Node curr = nodes.get(q);
                 //Ensures that the start node is added as visited
                 if(!visited.contains(curr)){

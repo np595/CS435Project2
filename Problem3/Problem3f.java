@@ -72,7 +72,7 @@ class Graph{
 }
 
 class Main{
-        int q = 0;
+        int currNode = 0;
         ArrayList<Node> visited = new ArrayList<Node>();
 
         ArrayList<Node> BFTRec(final Graph graph){
@@ -89,8 +89,8 @@ class Main{
                                 visited.add(curr.neighbors.get(i).dest);
                         }
                 }
-                if(q != (nodes.size() - 1)){
-                        q++;
+                if(currNode != (nodes.size() - 1)){
+                        currNode++;
                         ArrayList<Node> visitNe = BFTRec(graph);
                 }
                 return visited;

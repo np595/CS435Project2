@@ -64,13 +64,19 @@ class TopSort{
         ArrayList<Node> mDFS(final DirectedGraph graph){
                 HashSet<Node> nodes = graph.getAllNodes();
                 ArrayList<Node> node = new ArrayList<Node>(nodes);
+                //In a sense, yes, HashSet was easier to use overall and would've saved more time than constructing a brand new list.
+                //However, while this was occurring I was constantly using lists and wanted to continue to use them over sets.
+                //It was simply a decision I made back then which I will debate to change before the due date to transform all the nodes
+                //from the hashset instead of the arraylist.
                 final Stack<Node> stack = new Stack<Node>();
 
                 for(int i = 0; i < node.size(); i++){
                         if(node.get(i).visited != true)
                                 modifiedDfsHelper(node.get(i), stack);
                 }
-
+                //When using StringBuilder, it creates a stringbuilder to construct a variety of variables into it,
+                //in thise case I'm using the nodes values from the stack, to form into the stringbuilder to then convert it into a 
+                //string to show off the end output after mDFS has completed and shows the path it took.
                 final StringBuilder string = new StringBuilder("Output of Modified DFS: ");
                 while(!stack.empty()){
                         final Node curr = (Node) stack.pop();

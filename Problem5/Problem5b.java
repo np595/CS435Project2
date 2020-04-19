@@ -68,25 +68,25 @@ class Main{
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                WeightedGraph graphing = new WeightedGraph();
+                WeightedGraph weiGraph = new WeightedGraph();
                 Main test = new Main();
 
-                nodes[0] = graphing.addNode("a");
-                nodes[1] = graphing.addNode("b");
-                nodes[2] = graphing.addNode("c");
-                nodes[3] = graphing.addNode("d");
-                nodes[4] = graphing.addNode("e");
+                nodes[0] = weiGraph.addNode("a");
+                nodes[1] = weiGraph.addNode("b");
+                nodes[2] = weiGraph.addNode("c");
+                nodes[3] = weiGraph.addNode("d");
+                nodes[4] = weiGraph.addNode("e");
 
                 for(int i = 0; i < 10; i++){
-                        int nm = rand.nextInt(5);
-                        int m = rand.nextInt(5);
-                        graphing.addWeightedEdge(nodes[nm], nodes[m]);
+                        int firstNode = rand.nextInt(5);
+                        int secondNode = rand.nextInt(5);
+                        weiGraph.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
                 }
-                graphing.addWeightedEdge(nodes[2], nodes[4]);
+                weiGraph.addWeightedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors.get(0).dest.data);
-                HashSet<Node> testing = graphing.getAllNodes();
+                HashSet<Node> testing = weiGraph.getAllNodes();
                 System.out.println(nodes[2].data + "\n" + nodes[2].neighbors);
-                graphing.removeWeightedEdge(nodes[2], nodes[4]);
+                weiGraph.removeWeightedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[2].data + "\n" + nodes[2].neighbors);
         }
 }

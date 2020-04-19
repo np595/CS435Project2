@@ -117,7 +117,7 @@ class Main{
 
         Graph createRandomUnweightedGraphIter(Node[] nodes, int n){
                 Random rand = new Random();
-                Graph graphing = new Graph();
+                Graph undirGraph = new Graph();
                 //String alp = "abcdefghijklmnopqrstuvxyz";
                 //int size = alp.length();
                 for(int i = 0; i < n; i++){
@@ -125,27 +125,27 @@ class Main{
                         //String temp = String.valueOf(tempS);
                         int tempS = rand.nextInt(1000);
                         String temp = Integer.toString(tempS);
-                        nodes[i] = graphing.addNode(temp);
+                        nodes[i] = undirGraph.addNode(temp);
                 }
                 for(int k = 0; k < n; k++){
                         int firstNode = rand.nextInt(nodes.length);
                         int secondNode = rand.nextInt(nodes.length);
-                        graphing.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
+                        undirGraph.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
                 }
 
                 ArrayList<Node> check = new ArrayList<Node>();
                 check = DFSIter(nodes[0], nodes[3], n);
 
-                return graphing;
+                return undirGraph;
         }
         
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                Graph graphing = new Graph();
+                Graph undirGraph = new Graph();
                 Main test = new Main();
-                graphing = test.createRandomUnweightedGraphIter(nodes, nodeSize);
+                undirGraph = test.createRandomUnweightedGraphIter(nodes, nodeSize);
 
         }
 }

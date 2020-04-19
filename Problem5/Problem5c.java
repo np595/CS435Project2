@@ -66,7 +66,7 @@ class WeightedGraph{
 class Main{
         WeightedGraph createRandomCompleteWeightedGraph(Node[] nodes, final int n){
                 Random rand = new Random();
-                WeightedGraph graphing = new WeightedGraph();
+                WeightedGraph weiGraph = new WeightedGraph();
                 //String alp = "abcdefghijklmnopqrstuvxyz";
                 //int size = alp.length();
                 for(int i = 0; i < n; i++){
@@ -74,24 +74,24 @@ class Main{
                         //String temp = String.valueOf(tempS);
                         int tempS = rand.nextInt(1000);
                         String temp = Integer.toString(tempS);
-                        nodes[i] = graphing.addNode(temp);
+                        nodes[i] = weiGraph.addNode(temp);
                 }
                 for(int k = 0; k < (n*2); k++){
                         int firstNode = rand.nextInt(nodes.length);
                         int secondNode = rand.nextInt(nodes.length);
-                        graphing.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
+                        weiGraph.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
                 }
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors + " " + nodes[0].neighbors.get(0).weight);
-                return graphing;
+                return weiGraph;
         }
   
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                WeightedGraph graphing = new WeightedGraph();
+                WeightedGraph weiGraph = new WeightedGraph();
                 Main test = new Main();
 
-                graphing = test.createRandomCompleteWeightedGraph(nodes, nodeSize);       
+                weiGraph = test.createRandomCompleteWeightedGraph(nodes, nodeSize);       
         }
 }

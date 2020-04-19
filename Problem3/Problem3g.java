@@ -73,7 +73,7 @@ class Graph{
 
 class Main{
         
-         ArrayList<Node> BFTIter(final Graph graph){
+         ArrayList<Node> BFTIterHelper(final Graph graph){
                 HashSet<Node> node = graph.getAllNodes();
                 ArrayList<Node> nodes = new ArrayList<Node>(node);
                 ArrayList<Node> visited = new ArrayList<Node>();
@@ -90,7 +90,7 @@ class Main{
                 return visited;
         }
 
-        ArrayList<Node> BFT(final Graph graph){
+        ArrayList<Node> BFTIter(final Graph graph){
                 ArrayList<Node> visited = new ArrayList<Node>();
                 ArrayList<Node> BFTc = new ArrayList<Node>();
                 BFTc = BFTIter(graph);
@@ -115,7 +115,7 @@ class Main{
                 }
 
                 ArrayList<Node> check = new ArrayList<Node>();
-                check = BFT(graphing);
+                check = BFTIter(graphing);
                 return graphing;
         }
         

@@ -82,6 +82,8 @@ class TopSort{
                         final Node curr = (Node) stack.pop();
                         string.append("->"+curr.data);
                 }
+                //No, I didn't override the toString method, I was able to use the toString method in this way since it was a part of
+                //the StringBuilder class to make it an easy way to transfer over the stringbuilder into a string by the developers.
                 System.out.println(string.toString());
                 return node;
         }

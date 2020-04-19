@@ -75,31 +75,33 @@ class Main{
         
         Graph createLinkedList(Node[] nodes, int n){
                 Random rand = new Random();
-                Graph graphing = new Graph();
-                String alp = "abcdefghijklmnopqrstuvxyz";
-                int size = alp.length();
+                Graph undirGraph = new Graph();
+                //String alp = "abcdefghijklmnopqrstuvxyz";
+                //int size = alp.length();
                 for(int i = 0; i < n; i++){
-                        char tempS = alp.charAt(rand.nextInt(size));
-                        String temp = String.valueOf(tempS);
+                        //char tempS = alp.charAt(rand.nextInt(size));
+                        //String temp = String.valueOf(tempS);
+                        int tempS = rand.nextInt(1000);
+                        String temp = Integer.toString(tempS);
                         nodes[i] = graphing.addNode(temp);
                 }
-                for(int k = 0; k < nodes.length; k++){
-                        int nm = k;
-                        int m = k + 1;
-                        if(m < nodes.length){
-                                graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                for(int k = 0; k < n; k++){
+                        int firstNode = k;
+                        int secondNode = k + 1;
+                        if(secondNode < nodes.length){
+                                graphing.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
                         }
                 }
-                return graphing;
+                return undirGraph;
         }
         
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                Graph graphing = new Graph();
+                Graph undirGraph = new Graph();
                 Main test = new Main();
                 
-                graphing = test.createLinkedList(nodes, nodeSize);
+                undirGraph = test.createLinkedList(nodes, nodeSize);
         }
 }

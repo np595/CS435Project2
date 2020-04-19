@@ -83,13 +83,13 @@ class Main{
                         //String temp = String.valueOf(tempS);
                         int tempS = rand.nextInt(1000);
                         String temp = Integer.toString(tempS);
-                        nodes[i] = graphing.addNode(temp);
+                        nodes[i] = undirGraph.addNode(temp);
                 }
                 for(int k = 0; k < n; k++){
                         int firstNode = k;
                         int secondNode = k + 1;
                         if(secondNode < nodes.length){
-                                graphing.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
+                                undirGraph.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
                         }
                 }
                 return undirGraph;

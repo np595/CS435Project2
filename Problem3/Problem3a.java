@@ -76,24 +76,24 @@ class Main{
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                Graph graphing = new Graph();
+                Graph undirGraph = new Graph();
                 Main test = new Main();
-                nodes[0] = graphing.addNode("a");
-                nodes[1] = graphing.addNode("b");
-                nodes[2] = graphing.addNode("c");
-                nodes[3] = graphing.addNode("d");
-                nodes[4] = graphing.addNode("e");
+                nodes[0] = undirGraph.addNode("a");
+                nodes[1] = undirGraph.addNode("b");
+                nodes[2] = undirGraph.addNode("c");
+                nodes[3] = undirGraph.addNode("d");
+                nodes[4] = undirGraph.addNode("e");
 
                 for(int i = 0; i < 5; i++){
-                        int nm = rand.nextInt(5);
-                        int m = rand.nextInt(5);
-                        graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                        int firstNode = rand.nextInt(5);
+                        int secondNode = rand.nextInt(5);
+                        undirGraph.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
                 }
-                graphing.addUndirectedEdge(nodes[2], nodes[4]);
+                undirGraph.addUndirectedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors.get(0).dest.data);
-                HashSet<Node> testing = graphing.getAllNodes();
+                HashSet<Node> testing = undirGraph.getAllNodes();
                 System.out.println(nodes[2].data + "\n " + nodes[2].neighbors);
-                graphing.removeUndirectedEdge(nodes[2], nodes[4]);
+                undirGraph.removeUndirectedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[2].data + "\n " + nodes[2].neighbors);
         }
 }

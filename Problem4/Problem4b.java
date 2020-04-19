@@ -64,25 +64,25 @@ class Main{
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                DirectedGraph graphing = new DirectedGraph();
+                DirectedGraph dirGraph = new DirectedGraph();
                 Main test = new Main();
 
-                nodes[0] = graphing.addNode("a");
-                nodes[1] = graphing.addNode("b");
-                nodes[2] = graphing.addNode("c");
-                nodes[3] = graphing.addNode("d");
-                nodes[4] = graphing.addNode("e");
+                nodes[0] = dirGraph.addNode("a");
+                nodes[1] = dirGraph.addNode("b");
+                nodes[2] = dirGraph.addNode("c");
+                nodes[3] = dirGraph.addNode("d");
+                nodes[4] = dirGraph.addNode("e");
 
                 for(int i = 0; i < 10; i++){
                         int nm = rand.nextInt(5);
                         int m = rand.nextInt(5);
-                        graphing.addDirectedEdge(nodes[nm], nodes[m]);
+                        dirGraph.addDirectedEdge(nodes[nm], nodes[m]);
                 }
-                graphing.addDirectedEdge(nodes[2], nodes[4]);
+                dirGraph.addDirectedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors.get(0).dest.data);
-                HashSet<Node> testing = graphing.getAllNodes();
+                HashSet<Node> testing = dirGraph.getAllNodes();
                 System.out.println(nodes[2].data + "\n" + nodes[2].neighbors);
-                graphing.removeDirectedEdge(nodes[2], nodes[4]);
+                dirGraph.removeDirectedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[2].data + "\n" + nodes[2].neighbors);
         }
 }

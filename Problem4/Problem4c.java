@@ -61,7 +61,7 @@ class DirectedGraph{
 class Main{
         DirectedGraph createRandomDAGIter(Node[] nodes, final int n){
                 Random rand = new Random();
-                DirectedGraph graphing = new DirectedGraph();
+                DirectedGraph dirGraph = new DirectedGraph();
                 //String alp = "abcdefghijklmnopqrstuvxyz";
                 //int size = alp.length();
                 for(int i = 0; i < n; i++){
@@ -69,24 +69,24 @@ class Main{
                         //String temp = String.valueOf(tempS);
                         int tempS = rand.nextInt(1000);
                         String temp = Integer.toString(tempS);
-                        nodes[i] = graphing.addNode(temp);
+                        nodes[i] = dirGraph.addNode(temp);
                 }
                 for(int k = 0; k < (n*2); k++){
                         int firstNode = rand.nextInt(nodes.length);
                         int secondNode = rand.nextInt(nodes.length);
-                        graphing.addDirectedEdge(nodes[firstNode], nodes[secondNode]);
+                        dirGraph.addDirectedEdge(nodes[firstNode], nodes[secondNode]);
                 }
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors);
-                return graphing;
+                return dirGraph;
         }
         
         public static void main(String[] args){
                 int nodeSize = 5;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                DirectedGraph graphing = new DirectedGraph();
+                DirectedGraph dirGraph = new DirectedGraph();
                 Main test = new Main();
 
-                graphing = test.createRandomDAGIter(nodes, nodeSize);
+                dirGraph = test.createRandomDAGIter(nodes, nodeSize);
         }
 }

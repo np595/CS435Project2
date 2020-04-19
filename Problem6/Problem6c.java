@@ -127,7 +127,7 @@ class Main{
         WeightedGraph createRandomCompleteWeightedGraph(Node[] nodes, final int n){
                 TreadmillMazeSolver tread = new TreadmillMazeSolver();
                 Random rand = new Random();
-                WeightedGraph graphing = new WeightedGraph();
+                WeightedGraph weiGraph = new WeightedGraph();
                 ArrayList<Node> test = new ArrayList<Node>();
                 //String alp = "abcdefghijklmnopqrstuvxyz";
                 //int size = alp.length();
@@ -136,25 +136,25 @@ class Main{
                         //String temp = String.valueOf(tempS);
                         int tempS = rand.nextInt(1000);
                         String temp = Integer.toString(tempS);
-                        nodes[i] = graphing.addNode(temp);
+                        nodes[i] = weiGraph.addNode(temp);
                 }
                 for(int k = 0; k < (n*2); k++){
                         int firstNode = rand.nextInt(nodes.length);
                         int secondNode = rand.nextInt(nodes.length);
-                        graphing.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
+                        weiGraph.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
                 }
-                test = tread.dijkstras(graphing);
-                test = tread.astar(graphing);
-                return graphing;
+                test = tread.dijkstras(weiGraph);
+                test = tread.astar(weiGraph);
+                return weiGraph;
         }
 
         public static void main(String[] args){
                 int nodeSize = 10000;
                 Node[] nodes = new Node[nodeSize];
                 Random rand = new Random();
-                WeightedGraph graphing = new WeightedGraph();
+                WeightedGraph weiGraph = new WeightedGraph();
                 Main test = new Main();
 
-                graphing = test.createRandomCompleteWeightedGraph(nodes, nodeSize);
+                weiGraph = test.createRandomCompleteWeightedGraph(nodes, nodeSize);
         }
 }

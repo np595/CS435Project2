@@ -129,17 +129,19 @@ class Main{
                 Random rand = new Random();
                 WeightedGraph graphing = new WeightedGraph();
                 ArrayList<Node> test = new ArrayList<Node>();
-                String alp = "abcdefghijklmnopqrstuvxyz";
-                int size = alp.length();
+                //String alp = "abcdefghijklmnopqrstuvxyz";
+                //int size = alp.length();
                 for(int i = 0; i < n; i++){
-                        char tempS = alp.charAt(rand.nextInt(size));
-                        String temp = String.valueOf(tempS);
+                        //char tempS = alp.charAt(rand.nextInt(size));
+                        //String temp = String.valueOf(tempS);
+                        int tempS = rand.nextInt(1000);
+                        String temp = Integer.toString(tempS);
                         nodes[i] = graphing.addNode(temp);
                 }
                 for(int k = 0; k < (n*2); k++){
-                        int nm = rand.nextInt(nodes.length);
-                        int m = rand.nextInt(nodes.length);
-                        graphing.addWeightedEdge(nodes[nm], nodes[m]);
+                        int firstNode = rand.nextInt(nodes.length);
+                        int secondNode = rand.nextInt(nodes.length);
+                        graphing.addWeightedEdge(nodes[firstNode], nodes[secondNode]);
                 }
                 test = tread.dijkstras(graphing);
                 test = tread.astar(graphing);

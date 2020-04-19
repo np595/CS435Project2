@@ -74,9 +74,9 @@ class Main{
                 nodes[4] = dirGraph.addNode("e");
 
                 for(int i = 0; i < 10; i++){
-                        int nm = rand.nextInt(5);
-                        int m = rand.nextInt(5);
-                        dirGraph.addDirectedEdge(nodes[nm], nodes[m]);
+                        int firstNode = rand.nextInt(5);
+                        int secondNode = rand.nextInt(5);
+                        dirGraph.addDirectedEdge(nodes[firstNode], nodes[secondNode]);
                 }
                 dirGraph.addDirectedEdge(nodes[2], nodes[4]);
                 System.out.println(nodes[0].data + " " + nodes[0].neighbors.get(0).dest.data);

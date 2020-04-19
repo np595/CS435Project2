@@ -86,9 +86,9 @@ class Main{
                         nodes[i] = graphing.addNode(temp);
                 }
                 for(int k = 0; k < n; k++){
-                        int nm = rand.nextInt(nodes.length);
-                        int m = rand.nextInt(nodes.length);
-                        graphing.addUndirectedEdge(nodes[nm], nodes[m]);
+                        int firstNode = rand.nextInt(nodes.length);
+                        int secondNode = rand.nextInt(nodes.length);
+                        graphing.addUndirectedEdge(nodes[firstNode], nodes[secondNode]);
                 }
                 return graphing;
         }

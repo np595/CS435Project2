@@ -71,7 +71,7 @@ class Main{
                         String temp = Integer.toString(tempS);
                         nodes[i] = graphing.addNode(temp);
                 }
-                for(int k = 0; k < n; k++){
+                for(int k = 0; k < (n*2); k++){
                         int firstNode = rand.nextInt(nodes.length);
                         int secondNode = rand.nextInt(nodes.length);
                         graphing.addDirectedEdge(nodes[firstNode], nodes[secondNode]);
